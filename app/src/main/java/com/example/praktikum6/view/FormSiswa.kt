@@ -15,6 +15,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -38,9 +39,8 @@ import com.example.praktikum6.R
 @Composable
 fun FormIsian(
     pilihanJK: List<String>,
-    // onSubmitButtonClicked: (MutableList<String>) -> Unit,
-    // modifier: Modifier = Modifier
-    OnSubmitBtnClick: (MutableList<String>) -> Unit,
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier,
 ){
     var txtNama by rememberSaveable { mutableStateOf("") }
     var txtAlamat by remember { mutableStateOf("") }
@@ -67,6 +67,7 @@ fun FormIsian(
             OutlinedTextField(
                 value = txtNama,
                 singleLine = true,
+                shape = MaterialTheme.shapes.medium,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
@@ -104,17 +105,19 @@ fun FormIsian(
                 color = Color.Red
             )
             OutlinedTextField(
-                value = "",
+                value = txtAlamat,
                 singleLine = true,
-                modifier = Modifier
-                    .width(250.dp),
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.width(250.dp),
                 label = {Text(text = "Alamat")},
-                onValueChange = {},
+                onValueChange = {
+                    txtAlamat = it
+                },
             )
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f),
-                onClick = OnSubmitBtnClick
+                onClick = onSubmitButtonClicked
             ){
                 Text(stringResource(id = R.string.submit))
             }
