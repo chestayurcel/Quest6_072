@@ -21,6 +21,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,9 +36,21 @@ import com.example.praktikum6.R
 
 @Composable
 fun FormIsian(
-    jenisK:List<String> = listOf("Laki-laki","Perempuan"),
-    OnSubmitBtnClick : () -> Unit
+    // pilihanJK: List<String>,
+    // onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    // modifier: Modifier = Modifier
+    jenisK: List<String> = listOf("Laki-laki","Perempuan"),
+    OnSubmitBtnClick: (MutableList<String>) -> Unit,
 ){
+    var txtNama by rememberSaveable { mutableStateOf("") }
+    var txtAlamat by remember { mutableStateOf("") }
+    var txtGender by remember { mutableStateOf("") }
+    var listData: MutableList<String> = mutableListOf(
+        txtNama,
+        txtGender,
+        txtAlamat
+    )
+
     Scaffold (modifier = Modifier,
         {
             TopAppBar(
