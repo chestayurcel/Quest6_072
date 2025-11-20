@@ -13,7 +13,7 @@ import com.example.praktikum6.view.TampilData
 
 enum class Navigasi {
     Formulirku,
-    Detail
+    Tampilan
 }
 
 @Composable
@@ -31,11 +31,11 @@ fun DataApp(
                 FormIsian (
                     //pilihan JK = JenisK.map { id -> konteks.resources.getString(id) },
                     OnSubmitBtnClick = {
-                        navController.navigate(Navigasi.Detail.name)
+                        navController.navigate(Navigasi.Tampilan.name)
                     }
                 )
             }
-            composable(route = Navigasi.Detail.name){
+            composable(route = Navigasi.Tampilan.name){
                 TampilData(
                     onBackBtnClick = {
                         cancelAndBackToFormulirku(navController)
