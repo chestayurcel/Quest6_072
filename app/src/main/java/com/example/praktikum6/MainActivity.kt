@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.praktikum6.ui.theme.Praktikum6Theme
-import com.example.praktikum6.view.uicontroller.DataApp
 import com.example.praktikum6.view.uicontroller.SiswaApp
 
 class MainActivity : ComponentActivity() {
